@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Digital Memory Capsule</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+    <header class="header">
+        <div class="logo">
+            <div class="logo-icon">⌛</div>
+            <div>
+                <h1>MemoryCapsule</h1>
+                <p>Save today. Open tomorrow.</p>
+            </div>
+        </div>
+
+        <div class="header-badge">
+            🔐 Private & Local
+        </div>
+    </header>
+
+
+    <main class="container">
+
+        <!-- Hero -->
+        <section class="hero">
+            <div class="hero-content">
+                <span class="eyebrow">YOUR DIGITAL TIME CAPSULE</span>
+
+                <h2>
+                    Send a message
+                    <span>to your future self.</span>
+                </h2>
+
+                <p>
+                    Capture a thought, memory, goal or special moment today.
+                    Seal it and choose when your future self can read it.
+                </p>
+
+                <button class="primary-btn" onclick="scrollToCreate()">
+                    + Create Memory Capsule
+                </button>
+            </div>
+
+            <div class="hero-capsule">
+                <div class="capsule-ring ring-one"></div>
+                <div class="capsule-ring ring-two"></div>
+
+                <div class="capsule-icon">
+                    🔐
+                </div>
+
+                <span>SEALED</span>
+            </div>
+        </section>
+
+
+        <!-- Statistics -->
+        <section class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-icon">📦</div>
+                <div>
+                    <span>Total Capsules</span>
+                    <strong id="totalCapsules">0</strong>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon locked-icon">🔒</div>
+                <div>
+                    <span>Locked</span>
+                    <strong id="lockedCapsules">0</strong>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon unlocked-icon">🔓</div>
+                <div>
+                    <span>Unlocked</span>
+                    <strong id="unlockedCapsules">0</strong>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">💭</div>
+                <div>
+                    <span>Memories Created</span>
+                    <strong id="memoryCount">0</strong>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- Create Capsule -->
+        <section class="create-section" id="createSection">
+
+            <div class="section-heading">
+                <div>
+                    <span class="section-label">CREATE</span>
+                    <h3>Seal a New Memory</h3>
+                    <p>Write something your future self will appreciate.</p>
+                </div>
+            </div>
+
+
+            <form id="capsuleForm">
+
+                <div class="form-grid">
+
+                    <div class="form-group full">
+                        <label for="capsuleTitle">Capsule Title</label>
+
+                        <input
+                            type="text"
+                            id="capsuleTitle"
+                            placeholder="Example: A message to my future self"
+                            maxlength="80"
+                            required
+                        >
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="memoryType">Memory Type</label>
+
+                        <select id="memoryType">
+
+                            <option value="Future Me">🚀 Future Me</option>
+                            <option value="Achievement">🏆 Achievement</option>
+                            <option value="Birthday">🎂 Birthday</option>
+                            <option value="Friendship">💙 Friendship</option>
+                            <option value="Travel">✈️ Travel</option>
+                            <option value="Goal">🎯 Goal</option>
+                            <option value="Special Moment">✨ Special Moment</option>
+                            <option value="Other">📝 Other</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="unlockDate">Unlock Date</label>
+
+                        <input
+                            type="date"
+                            id="unlockDate"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label for="memoryText">Your Memory</label>
+
+                        <textarea
+                            id="memoryText"
+                            rows="7"
+                            maxlength="1000"
+                            placeholder="Write a message, thought, goal, prediction, memory or anything you want your future self to read..."
+                            required
+                        ></textarea>
+
+                        <div class="character-count">
+                            <span id="characterCount">0</span>/1000 characters
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-actions">
+
+                    <button type="button" class="secondary-btn" onclick="loadSample()">
+                        Load Sample
+                    </button>
+
+                    <button type="submit" class="primary-btn">
+                        🔐 Seal Capsule
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+        <!-- Capsule Library -->
+        <section class="library-section">
+
+            <div class="section-heading library-heading">
+
+                <div>
+                    <span class="section-label">YOUR MEMORIES</span>
+                    <h3>Capsule Library</h3>
+                    <p>All your sealed and opened memories in one place.</p>
+                </div>
+
+                <div class="library-controls">
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search capsules..."
+                    >
+
+                    <select id="filterSelect">
+
+                        <option value="all">All Capsules</option>
+                        <option value="locked">🔒 Locked</option>
+                        <option value="unlocked">🔓 Unlocked</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div id="capsuleContainer" class="capsule-grid"></div>
+
+
+            <div id="emptyState" class="empty-state">
+
+                <div class="empty-icon">⌛</div>
+
+                <h3>No memories yet</h3>
+
+                <p>
+                    Your future self is waiting.
+                    Create your first memory capsule above.
+                </p>
+
+                <button class="primary-btn" onclick="scrollToCreate()">
+                    Create First Capsule
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer class="footer">
+        <p>MemoryCapsule © 2026</p>
+        <span>Your memories stay in this browser.</span>
+    </footer>
+
+
+    <!-- Memory Modal -->
+    <div class="modal-overlay" id="memoryModal">
+
+        <div class="modal">
+
+            <button class="close-btn" onclick="closeModal()">×</button>
+
+            <div class="modal-icon">🔓</div>
+
+            <span class="modal-label">CAPSULE OPENED</span>
+
+            <h2 id="modalTitle">Memory Title</h2>
+
+            <div class="modal-meta">
+                <span id="modalType">Future Me</span>
+                <span id="modalDate">January 1, 2027</span>
+            </div>
+
+            <div class="modal-memory" id="modalMemory">
+                Memory text
+            </div>
+
+            <button class="primary-btn modal-btn" onclick="closeModal()">
+                Close Memory
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
